@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>Acadly | Your learning space</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="authView" class="auth-shell">
+    <div class="auth-brand">
+      <div class="brand-mark"><i class="fa-solid fa-graduation-cap"></i></div>
+      <span>acadly</span>
+    </div>
+    <div class="auth-card">
+      <div class="auth-copy">
+        <span class="eyebrow">YOUR LEARNING SPACE</span>
+        <h1>Make every<br><span>study session</span> count.</h1>
+        <p>Keep your subjects, study plans, and progress in one place.</p>
+        <div class="auth-note"><i class="fa-solid fa-sparkles"></i> A little progress each day adds up.</div>
+      </div>
+      <div class="auth-form-wrap">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-auth="login">Sign in</button>
+          <button class="auth-tab" data-auth="register">Create account</button>
+        </div>
+        <form id="loginForm" class="auth-form">
+          <h2>Welcome back</h2><p>Sign in to continue learning.</p>
+          <label>Email or username<input name="identifier" required placeholder="you@example.com"></label>
+          <label>Password<div class="password-wrap"><input name="password" type="password" required placeholder="Enter your password"><button type="button" class="show-pass"><i class="fa-regular fa-eye"></i></button></div></label>
+          <button class="primary-btn full" type="submit">Sign in <i class="fa-solid fa-arrow-right"></i></button>
+          <div class="form-message" id="loginMessage"></div>
+        </form>
+        <form id="registerForm" class="auth-form hidden">
+          <h2>Create your account</h2><p>Start building better study habits.</p>
+          <label>Full name<input name="name" required placeholder="Your name"></label>
+          <label>Username<input name="username" required minlength="3" placeholder="Choose a username"></label>
+          <label>Email address<input name="email" type="email" required placeholder="you@example.com"></label>
+          <label>Password<input name="password" type="password" required minlength="8" placeholder="At least 8 characters"></label>
+          <button class="primary-btn full" type="submit">Create account <i class="fa-solid fa-arrow-right"></i></button>
+          <div class="form-message" id="registerMessage"></div>
+        </form>
+      </div>
+    </div>
+    <div class="auth-footer">ACADLY <span>·</span> LEARN AT YOUR OWN PACE</div>
+  </div>
+
+  <div id="appView" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#"><span class="brand-mark"><i class="fa-solid fa-graduation-cap"></i></span><span>acadly</span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav">
+        <button class="nav-link active" data-page="dashboard"><i class="fa-solid fa-grid-2"></i> Overview</button>
+        <button class="nav-link" data-page="subjects"><i class="fa-solid fa-book-open"></i> My subjects</button>
+        <button class="nav-link" data-page="planner"><i class="fa-regular fa-calendar-check"></i> Study planner</button>
+        <button class="nav-link" data-page="quizzes"><i class="fa-solid fa-clipboard-question"></i> Quizzes</button>
+        <button class="nav-link" data-page="analytics"><i class="fa-solid fa-chart-line"></i> My progress</button>
+      </nav>
+      <div class="side-label tools-label">PERSONAL</div>
+      <nav class="side-nav">
+        <button class="nav-link" data-page="profile"><i class="fa-regular fa-user"></i> My profile</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="upgrade-card"><div class="upgrade-icon"><i class="fa-solid fa-lightbulb"></i></div><strong>Keep showing up.</strong><p>Small steps make a big difference.</p></div>
+        <button class="logout-btn" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu"><i class="fa-solid fa-bars"></i></button>
+        <div class="breadcrumb">Workspace <i class="fa-solid fa-chevron-right"></i> <span id="pageCrumb">Overview</span></div>
+        <div class="top-actions"><span class="today-label" id="todayLabel"></span><div class="top-avatar" id="topAvatar">S</div></div>
+      </header>
+      <div class="page-content">
+        <section id="dashboardPage" class="page active">
+          <div class="welcome-row"><div><span class="eyebrow">SUNDAY, YOUR DAY TO RESET</span><h1 id="welcomeTitle">Good to see you.</h1><p>Here's what's happening with your learning today.</p></div><div class="date-chip"><i class="fa-regular fa-calendar"></i><span id="fullDate"></span></div></div>
+          <div class="stat-grid">
+            <article class="stat-card"><div class="stat-top"><span>Study XP</span><span class="stat-icon purple"><i class="fa-solid fa-bolt"></i></span></div><strong id="xpStat">0</strong><small>Earn XP as you learn</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Tasks completed</span><span class="stat-icon green"><i class="fa-solid fa-check"></i></span></div><strong id="completedStat">0</strong><small>Keep your momentum</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Tasks to do</span><span class="stat-icon orange"><i class="fa-regular fa-clock"></i></span></div><strong id="pendingStat">0</strong><small>One step at a time</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Quiz average</span><span class="stat-icon blue"><i class="fa-solid fa-chart-simple"></i></span></div><strong id="averageStat">0<small>%</small></strong><small id="attemptStat">No attempts yet</small></article>
+          </div>
+          <div class="content-grid">
+            <section class="panel subjects-panel"><div class="panel-heading"><div><span class="eyebrow">YOUR CLASSROOM</span><h2>My subjects</h2></div><button class="text-btn" data-go="subjects">View all <i class="fa-solid fa-arrow-right"></i></button></div><div id="subjectPreview" class="subject-list"></div></section>
+            <section class="panel task-panel"><div class="panel-heading"><div><span class="eyebrow">STAY ON TRACK</span><h2>Upcoming tasks</h2></div><button class="icon-btn" data-go="planner"><i class="fa-solid fa-arrow-up-right-from-square"></i></button></div><div id="taskPreview" class="task-list"></div></section>
+          </div>
+          <section class="panel activity-panel"><div class="panel-heading"><div><span class="eyebrow">YOUR RECENT WORK</span><h2>Recent activity</h2></div></div><div id="activityList" class="activity-list"></div></section>
+        </section>
+
+        <section id="subjectsPage" class="page"><div class="page-heading"><div><span class="eyebrow">LEARNING LIBRARY</span><h1>My subjects</h1><p>Your learning areas in one place.</p></div></div><div id="allSubjects" class="subject-grid"></div></section>
+
+        <section id="plannerPage" class="page"><div class="page-heading"><div><span class="eyebrow">PLAN YOUR WORK</span><h1>Study planner</h1><p>Write down what needs to get done.</p></div></div><div class="planner-layout"><section class="panel"><div class="panel-heading"><div><h2>Add a task</h2><p>Keep your next steps clear.</p></div></div><form id="taskForm" class="task-form"><label>Task title<input name="title" required placeholder="e.g. Review calculus notes"></label><div class="form-row"><label>Subject<input name="subject" placeholder="e.g. Mathematics"></label><label>Due date<input name="due_date" type="date"></label></div><label>Priority<select name="priority"><option>Normal</option><option>High</option><option>Low</option></select></label><button class="primary-btn" type="submit">Add to planner <i class="fa-solid fa-plus"></i></button><div class="form-message" id="taskMessage"></div></form></section><section class="panel"><div class="panel-heading"><div><h2>Your tasks</h2><p>Check things off as you go.</p></div></div><div id="allTasks" class="task-list"></div></section></div></section>
+
+        <section id="quizzesPage" class="page"><div class="page-heading"><div><span class="eyebrow">CHECK WHAT YOU KNOW</span><h1>Quizzes</h1><p>Practice a little and see how far you've come.</p></div></div><div id="quizGrid" class="quiz-grid"></div><div id="quizStage" class="panel quiz-stage hidden"></div></section>
+
+        <section id="analyticsPage" class="page"><div class="page-heading"><div><span class="eyebrow">YOUR LEARNING JOURNEY</span><h1>My progress</h1><p>A simple look at your recent quiz results.</p></div></div><section class="panel"><div class="panel-heading"><div><h2>Quiz history</h2><p>Your latest attempts.</p></div></div><div id="attemptList"></div></section></section>
+
+        <section id="profilePage" class="page"><div class="page-heading"><div><span class="eyebrow">YOUR SPACE</span><h1>My profile</h1><p>Manage the details shown on your account.</p></div></div><section class="panel profile-panel"><div class="profile-avatar" id="profileAvatar">S</div><div><h2 id="profileName"></h2><p id="profileEmail" class="muted"></p><span class="role-tag" id="profileRole">STUDENT</span></div><form id="profileForm" class="profile-form"><label>Display name<input name="name" required></label><label>About me<textarea name="bio" rows="3" placeholder="A little about yourself..."></textarea></label><button class="primary-btn" type="submit">Save changes</button><div class="form-message" id="profileMessage"></div></form></section></section>
+      </div>
+      <footer class="app-footer">Made for the curious. <span>© 2026 Acadly</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
